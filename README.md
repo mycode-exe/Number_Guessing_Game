@@ -1,0 +1,3 @@
+This project is a simple Python program that challenges the player to guess a randomly generated number. It makes use of Python’s built-in random module to select a number within a given range, and the player must attempt to guess the correct value before running out of lives.
+
+The initial version contains just the basic number guessing script, but the later version(s) provide feedback to let the player know whether their attempt was too high or too low, creating a process of elimination until they succeed or their lives run out.

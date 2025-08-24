@@ -13,7 +13,7 @@
 #*                                                                                                                  *
 #********************************************************************************************************************
 #
-# Name: (number_guessing_game)
+# Name: number_guessing_game
 # Version: v1.1.2
 # Builder: mycode.exe
 #
@@ -22,7 +22,7 @@
 #   [x] - Give user limited lives/tries until game over
 #   [x] - Give hints depending how far the generated number is from the user's guesses
 #   [x] - Use 'while' loop to keep program running until lives are used up or number is guessed
-#   [ ] - Create multiple responses for Bagley when the guess is incorrect, and choose the response at random
+#   [x] - Create multiple responses for Bagley when the guess is incorrect, and choose the response at random
 #   [ ] - Show past guesses by the player
 #   [ ] - Difficulty levels?
 #           - Easy: 1-50?
@@ -48,13 +48,14 @@ num_to_guess = random.randint(1,99)
 #num_to_guess = 29 #[debugging code]
 lives_left = 5
 user_guess = 0
+past_user_guesses = []
 
 # Response Storage
 wrong_guess_response_1 = [
     "\nBold of you to assume your very first try would be correct. Adorable, really. Try again.",
     "\nIncorrect. But don't worry, you've only wasted 20% of your chances. Try again.", 
     "\nFirst attempt failed. It's almost as if lady luck doesn't care about you. Try again.",
-    "\nYour first guess, and already wrong. Outstanding consistency.",
+    "\nYour first guess, and already wrong. A sign of things to come?",
     "\nAh, the first guess. Humanity's favourite way to prove evolution is reversible.",
     "\nAttempt number one. Statistically speaking, this should be your best. Which is depressing."]
 wrong_guess_response_2 = [
@@ -109,23 +110,12 @@ print(
 #Main Loop
 while lives_left > 0:
     #print(num_to_guess) #[debugging code]
-    user_guess = int(input("\n\nWhat is your guess?: "))
-    num_diff = user_guess - num_to_guess
-    #print (num_diff) #[debugging code]
-    
-    if num_diff < 25:
-        num_hint = "massively"
-    if num_diff < 15:
-        num_hint = "a lot"
-    if num_diff < 15:
-        num_hint = "a bit"
-    if num_diff < 7:
-        num_hint = "a little"
-    if num_diff < 3:
-        num_hint = "slightly"
+    user_guess = int(input("\n\nWhat is your guess?: \n"))
     
     # Incorrect loop
     if user_guess != num_to_guess:
+        
+        past_user_guesses.append(user_guess)
         
         if lives_left == 5:
             attempt_1_response_wrong = random.choice(wrong_guess_response_1)
@@ -145,13 +135,38 @@ while lives_left > 0:
         
         lives_left = lives_left - 1 
 
-        # Higher/Lower Argument
+        
+        if user_guess > num_to_guess:
+            num_diff = user_guess - num_to_guess
+            #print(num_diff) #[debugging code]
+            #print("Clac 1") #[debugging code]
+        else:
+            num_diff = num_to_guess - user_guess
+            #print(num_diff) #[debugging code]
+            #print("Calc 2") #[debugging code]
+            
+        if num_diff >= 41:
+            num_hint = "ridiculously"
+        elif num_diff >= 28 and num_diff < 40:
+            num_hint = "massively"
+        elif num_diff >= 21 and num_diff <= 27:
+            num_hint = "incredibly"
+        elif num_diff >= 15 and num_diff <= 20:
+            num_hint = "a lot"
+        elif num_diff >= 7 and num_diff <= 14:
+            num_hint = "a bit"
+        elif num_diff >= 3 and num_diff <= 6:
+            num_hint = "a little"
+        elif num_diff <= 2:
+            num_hint = "slightly"
+            
+        # Higher/Lower Hint
         if user_guess > num_to_guess and lives_left > 0:
             print(f"\nThe number you are looking for is {num_hint} lower.")
         if user_guess < num_to_guess and lives_left > 0:
             print(f"\nThe number you are looking for is {num_hint} higher.")
 
-        
+        print(f"\nYou have previously guessed: {past_user_guesses}")
         print(f"\nYou have {lives_left} lives remaining.")
     
     # Win state/message
@@ -171,9 +186,10 @@ if lives_left == 0:
         
 """
     Update Message/Notes (v1.1.2):
-        - 
-        - 
-        - 
+        - Upon investigation in code testing area, "higher/lower hint", the subtraction from one from the other could sometimes lead to a negative number, making the 'if' bank to assign the 'num_hint' to not work properly
+        - Had issues for the 'if' bank around the 'num_hint' working, but seemed to be down to greater-than & less-than symbols being the wrong way around to cause the 'if' statements to fire correctly
+        - Added short piece of code to display the player's past guesses
+        - Next update: Add specific 'win_responses' dependent on how many lives the player had used before getting the correct answer
 
 """        
 

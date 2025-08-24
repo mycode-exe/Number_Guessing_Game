@@ -14,7 +14,7 @@
 #********************************************************************************************************************
 #
 # Name: (number_guessing_game)
-# Version: v1.0.0
+# Version: v1.1.1
 # Builder: mycode.exe
 #
 #   Potential Components:
@@ -22,7 +22,7 @@
 #   [x] - Give user limited lives/tries until game over
 #   [x] - Give hints depending how far the generated number is from the user's guesses
 #   [x] - Use 'while' loop to keep program running until lives are used up or number is guessed
-#   [ ] - Create multiple responses for Bagley when the guess is incorrect, and choose the response at random
+#   [x] - Create multiple responses for Bagley when the guess is incorrect, and choose the response at random
 #   [ ] - 
 #   [ ] - 
 #   [ ] - 

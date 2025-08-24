@@ -1,0 +1,12 @@
+Update Notes (taken from notes section at bottom of code):
+    
+    (v1.1.1);
+        - Adding the responses was a fairly easy addition, but getting the timing on the loop seems to be the sticking point. As it shows the 5th try response as the loop ends.
+        - I realised I worded the message for the 5th attempt wrong, so it wouldn't fit in the loop. And I also realised that I needed to add a 'and lives_left > 0' to the end of the higher/lower arguement so the text didn't print to screen if the player had already lost.
+        - I decided to also add different win & lose state responses, just to add to the extra flavour
+        - The next update will likely be a fix of the higher/lower arguement, as it doesn't seem to give accurate guidance to the user with some numbers generated. Likely due to how the num_diff is calculated and then passed to the bank of 'if' statements.
+
+    (v1.1.2);
+        - 
+        - 
+        - 

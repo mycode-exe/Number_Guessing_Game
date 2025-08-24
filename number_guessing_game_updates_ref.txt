@@ -7,6 +7,7 @@ Update Notes (taken from notes section at bottom of code):
         - The next update will likely be a fix of the higher/lower arguement, as it doesn't seem to give accurate guidance to the user with some numbers generated. Likely due to how the num_diff is calculated and then passed to the bank of 'if' statements.
 
     (v1.1.2);
-        - 
-        - 
-        - 
+        - Upon investigation in code testing area, "higher/lower hint", the subtraction from one from the other could sometimes lead to a negative number, making the 'if' bank to assign the 'num_hint' to not work properly
+        - Had issues for the 'if' bank around the 'num_hint' working, but seemed to be down to greater-than & less-than symbols being the wrong way around to cause the 'if' statements to fire correctly
+        - Added short piece of code to display the player's past guesses
+        - Next update: Add specific 'win_responses' dependent on how many lives the player had used before getting the correct answer
